@@ -30,7 +30,7 @@ const deleteExistingCommands = async (
   { applicationID }: { applicationID: string },
   authedFetch: typeof fetch
 ): Promise<void> => {
-  const url = `https://discord.com/api/v8/applications/${applicationID}/commands`;
+  const url = `https://discord.com/api/v8/applications/${applicationID}/guilds/781092225404108820/commands`;
   const response = await authedFetch(url);
   const commands = await response.json();
 
@@ -40,7 +40,7 @@ const deleteExistingCommands = async (
         command: ApplicationCommand & { id: string; application_id: string }
       ) => {
         return authedFetch(
-          `https://discord.com/api/v8/applications/${applicationID}/commands/${command.id}`,
+          `https://discord.com/api/v8/applications/${applicationID}/guilds/781092225404108820/commands/${command.id}`,
           {
             method: "DELETE",
           }
